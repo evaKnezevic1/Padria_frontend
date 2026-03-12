@@ -110,7 +110,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center ml-[-7vw] translate-x-1">
-              <Imagew
+              <Image
                 src="/images/Padria_Logo_transp.png"
                 alt="Pavica's Homes Logo"
                 width={120}
