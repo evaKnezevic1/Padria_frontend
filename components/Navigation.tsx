@@ -109,8 +109,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
         <div className="max-w-7xl mx-auto px-2 py-2">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center ml-[-10vw]">
-              <Image
+            <Link href="/" className="flex items-center ml-[-7vw] translate-x-1">
+              <Imagew
                 src="/images/Padria_Logo_transp.png"
                 alt="Pavica's Homes Logo"
                 width={120}
