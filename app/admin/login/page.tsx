@@ -17,9 +17,20 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      await apiClient.post('/admin/login', { email, password });
-      router.push('/');
+      const response = await apiClient.post('/admin/login', { email, password });
+      
+      // Check if user is admin
+      if (response.data.user && response.data.user.role === 'admin') {
+        // Wait a moment for cookie to be set, then redirect
+        setTimeout(() => {
+          router.push('/');
+          window.location.reload(); // Force reload to update admin status
+        }, 500);
+      } else {
+        setError('Access denied. Admin privileges required.');
+      }
     } catch (err: any) {
+      console.error('Login error:', err);
       setError(err.response?.data?.detail || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
@@ -75,10 +86,6 @@ export default function AdminLoginPage() {
             {loading ? 'Logging in...' : 'Log In'}
           </button>
         </form>
-
-        <p className="text-center text-gray-600 mt-6 text-sm">
-          Demo credentials: admin@example.com / password
-        </p>
 
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-gray-600 text-sm mb-4">Not an admin?</p>

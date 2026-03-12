@@ -1,5 +1,53 @@
+# Dependencies
 node_modules/
-.next/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables (local & secrets)
 .env
 .env.local
 .env.*.local
+.env.production.local
+.env.development.local
+.env.*.example
+
+# Build output
+.next/
+out/
+build/
+dist/
+
+# Logs
+
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Testing & Coverage
+.nyc_output/
+coverage/
+.jest_cache/
+.node_repl_history
+
+# Deployment
+.vercel/
+.turbo/
+
+# Misc
+.cache/
