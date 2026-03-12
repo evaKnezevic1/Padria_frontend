@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import apiClient from '@/utils/apiClient';
 
@@ -10,6 +10,18 @@ export default function AdminLoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    apiClient.get('/admin/me')
+      .then((res) => {
+        if (res.data?.role === 'admin') {
+          router.replace('/');
+        }
+      })
+      .catch(() => {
+        // Not logged in as admin, stay on login page.
+      });
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,11 +33,9 @@ export default function AdminLoginPage() {
       
       // Check if user is admin
       if (response.data.user && response.data.user.role === 'admin') {
-        // Wait a moment for cookie to be set, then redirect
-        setTimeout(() => {
-          router.push('/');
-          window.location.reload(); // Force reload to update admin status
-        }, 500);
+        // Replace login history entry and go straight to home in admin mode.
+        router.replace('/');
+        return;
       } else {
         setError('Access denied. Admin privileges required.');
       }
