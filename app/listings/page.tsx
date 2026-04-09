@@ -116,11 +116,11 @@ function ListingsContent() {
   return (
     <main>
       <Navigation forceWhite />
-      <div className={`fixed top-0 left-0 right-0 h-24 pointer-events-none z-40 transition-all duration-300 ${
+      <div className={`fixed top-0 left-0 right-0 h-28 pointer-events-none z-40 transition-all duration-300 ${
         isScrolled ? 'border-b-0' : 'border-b border-gray-200'
       }`}></div>
 
-      <div className="pt-40 pb-16 bg-white min-h-screen">
+      <div className="pt-44 pb-16 bg-[#e8d8c8] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
           {/* Page Header with Filters */}
           <div className="mb-12 flex justify-between items-start">

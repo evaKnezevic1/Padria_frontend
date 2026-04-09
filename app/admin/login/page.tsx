@@ -48,13 +48,13 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#3a3f66] flex items-center justify-center px-4">
       <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
-            Estate<span className="text-orange-500">Pro</span>
+            Padria<span className="text-[#3a3f66]">Boutique</span>
           </h1>
-          <p className="text-gray-600 mt-2">Admin Dashboard</p>
+          <p className="text-gray-600 mt-2"></p>
         </div>
 
         {error && (
@@ -91,7 +91,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-colors"
+            className="w-full bg-[#1a1d40] disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition-colors"
           >
             {loading ? 'Logging in...' : 'Log In'}
           </button>
@@ -101,7 +101,7 @@ export default function AdminLoginPage() {
           <p className="text-gray-600 text-sm mb-4">Not an admin?</p>
           <a
             href="/"
-            className="block text-center text-orange-500 hover:text-orange-600 font-semibold"
+            className="block text-center text-[#1a1d40] font-semibold"
           >
             Back to Home
           </a>

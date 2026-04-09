@@ -155,13 +155,6 @@ function ListingCardInner({ listing, imageUrl, onDelete, isAdmin = false }: List
             </div>
           )}
         </div>
-
-        {/* View Details Button */}
-        <div className="px-5 pb-5 mt-auto">
-          <button className="w-full bg-[#8f6c38] hover:bg-[#5a411a] text-white py-2 rounded-lg font-semibold transition-colors">
-            {language === 'hr' ? 'Prikaži više' : 'View Details'}
-          </button>
-        </div>
       </div>
     </Link>
   );

@@ -31,6 +31,7 @@ interface AboutContent {
   why_items_en: string | null;
   contact_title_en: string | null;
   contact_text_en: string | null;
+  about_image_url: string | null;
 }
 
 const uiText = {

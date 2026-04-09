@@ -135,7 +135,7 @@ export default function FeaturedListings() {
 
   if (loading) {
     return (
-      <section className="py-16 bg-light">
+      <section className="py-16 bg-[#e8dfbc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
@@ -146,7 +146,7 @@ export default function FeaturedListings() {
   }
 
   return (
-    <section className="py-16 bg-light">
+    <section className="py-16 bg-[#e8dfbc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -260,7 +260,7 @@ export default function FeaturedListings() {
         <div className="text-center mt-12">
           <a
             href="/listings"
-            className="inline-block bg-white border-2 border-[#735220] text-[#735220] hover:bg-[#593f16] hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            className="inline-block bg-white border-2 border-[#bd9462] text-[#9e784a] hover:bg-[#bd9462] hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
           >
             {language === 'hr' ? 'Prikaži sve' : 'View All Listings'}
           </a>

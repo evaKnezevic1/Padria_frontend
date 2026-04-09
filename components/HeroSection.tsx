@@ -13,14 +13,14 @@ const heroTranslations = {
     sale: 'Sale',
     rent: 'Rent',
     searchPlaceholder: 'Street, neighborhood, city',
-    tagline: 'Over 10 years of experience in matching people with their perfect homes.',
+    tagline: 'Leading boutique real estate agency in Zadar County.',
   },
   hr: {
     title: '...Zadar je stil života',
     sale: 'Prodaja',
     rent: 'Najam',
     searchPlaceholder: 'Ulica, kvart, grad',
-    tagline: 'Preko 10 godina iskustva u spajanju ljudi s njihovim savršenim domovima.',
+    tagline: 'Vodeća butique agencija za posredovanje nekretninama u zadarskoj županiji',
   },
 };
 
@@ -32,9 +32,9 @@ export default function HeroSection() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const heroImages = [
-    '/images/hero_images/background2.png',
+    '/images/hero_images/zadar3.jpg',
     '/images/hero_images/fosa.png',
-    '/images/hero_images/zadric.jpg',
+    '/images/hero_images/005.jpg',
     '/images/hero_images/donat.png',
   ];
 
@@ -98,7 +98,7 @@ export default function HeroSection() {
               className={`px-6 py-2 text-sm font-semibold rounded-tl-lg rounded-tr-lg transition-colors ${
                 activeTab === 'prodaja'
                   ? 'bg-white text-gray-900'
-                  : 'bg-[#947547] text-white hover:bg-[#7d623b]'
+                  : 'bg-[#bd9462] text-white hover:bg-[#bf8743]'
               }`}
             >
               {heroText.sale}
@@ -109,7 +109,7 @@ export default function HeroSection() {
               className={`px-6 py-2 text-sm font-semibold rounded-tl-lg rounded-tr-lg transition-colors ${
                 activeTab === 'najam'
                   ? 'bg-white text-gray-900'
-                  : 'bg-[#947547] text-white hover:bg-[#7d623b]'
+                  : 'bg-[#bd9462] text-white hover:bg-[#bf8743]'
               }`}
             >
               {heroText.rent}
@@ -127,7 +127,7 @@ export default function HeroSection() {
             />
             <button
               type="submit"
-              className="bg-[#947547] hover:bg-[#7d623b] text-white px-6 py-4 h-10 transition-colors flex items-center justify-center"
+              className="bg-[#bd9462] hover:bg-[#bf8743] text-white px-6 py-4 h-10 transition-colors flex items-center justify-center"
             >
               <FaSearch className="w-5 h-5" />
             </button>

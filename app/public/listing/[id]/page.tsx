@@ -32,7 +32,7 @@ export default function ListingDetailPage() {
 
       // Images are already included in the listing response
       if (listingData.images && listingData.images.length > 0) {
-        setImages(listingData.images.map((img: any) => img.image_url.startsWith('http') ? img.image_url : `${backendRoot}${img.image_url}`));
+        setImages(listingData.images.map((img: any) => `${backendRoot}${img.image_url}`));
       }
     } catch (err) {
       console.error('Error fetching listing:', err);
@@ -144,7 +144,7 @@ export default function ListingDetailPage() {
 
             {/* Right Column - Contact Card */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow-lg p-8 sticky top-24">
+              <div className="bg-white rounded-lg shadow-lg p-8 sticky top-28">
                 {/* Price */}
                 <div className="mb-8 pb-8 border-b border-gray-200">
                   <p className="text-gray-600 text-sm mb-2">Price</p>
