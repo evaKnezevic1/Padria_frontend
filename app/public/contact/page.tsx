@@ -44,9 +44,9 @@ interface ContactContent {
 }
 
 const heroImages = [
-  '/images/hero_images/background2.png',
+  '/images/hero_images/zadar3.jpg',
   '/images/hero_images/fosa.png',
-  '/images/hero_images/zadric.jpg',
+  '/images/hero_images/005.jpg',
   '/images/hero_images/donat.png',
 ];
 
