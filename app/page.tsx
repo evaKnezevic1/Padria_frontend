@@ -264,7 +264,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-8 bg-gradient-to-r bg-[#354f54] shadow-lg text-white">
+      <section className="pt-8 bg-gradient-to-r bg-[#354f54] shadow-lg text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-4">{language === 'hr' ? 'Tražite svoj novi dom?' : 'Ready to Find Your Next Home?'}</h2>
           <p className="text-base mb-4 opacity-90">
@@ -308,7 +308,9 @@ export default function Home() {
               alt="hgk logo"
               className="w-20 h-20 -mt-6 object-contain hover:scale-110 transition"
               />
+  
           </div>
+          <p className="text-sm -mt-2"> {language === 'hr' ? 'Licencirana agencija za nekretnine' : 'Licensed real estate agency'}</p>
         </div>
       </section>
     </main>
