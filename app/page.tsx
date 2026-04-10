@@ -125,7 +125,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-[#e8dfbc]">
+    <main className="bg-[#c4b8a3]">
       {/* Hero Section */}
       <HeroSection />
 

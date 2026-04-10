@@ -115,14 +115,14 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             <div className="hidden md:flex items-center gap-16 flex-1 justify-end pr-36">
               <Link
                 href="/"
-                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
+                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300 courgette-regular"
               >
                 {t.home}
               </Link>
 
               {/* Real Estate Dropdown with Nested Submenus */}
               <div className="group relative">
-                <button className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300">
+                <button className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300 courgette-regular">
                   {t.realEstate}
                 
                 </button>
@@ -188,14 +188,14 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             <div className="hidden md:flex items-center gap-16 flex-1 justify-start pl-24">
               <Link
                 href="/public/about"
-                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
+                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300 courgette-regular"
               >
                 {t.aboutUs}
               </Link>
 
               <Link
                 href="/public/contact"
-                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
+                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300 courgette-regular"
               >
                 {t.contactUs}
               </Link>

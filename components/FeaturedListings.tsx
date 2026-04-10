@@ -135,7 +135,7 @@ export default function FeaturedListings() {
 
   if (loading) {
     return (
-      <section className="py-16 bg-[#e8dfbc]">
+      <section className="py-16 bg-[#c4b8a3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
@@ -146,7 +146,7 @@ export default function FeaturedListings() {
   }
 
   return (
-    <section className="py-16 bg-[#e8dfbc]">
+    <section className="py-16 bg-[#c4b8a3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">

@@ -100,7 +100,7 @@ function ListingCardInner({ listing, imageUrl, onDelete, isAdmin = false }: List
           {/* Location - Fixed Height */}
           <div className="h-6 mb-2">
             <p className="text-gray-600 text-sm flex items-center">
-              <svg className="w-4 h-4 mr-2 text-[#7a5d30] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 mr-2 text-[#917551] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               <span className="line-clamp-1">{listing.city}, {listing.state} {listing.zip_code}</span>
@@ -111,22 +111,22 @@ function ListingCardInner({ listing, imageUrl, onDelete, isAdmin = false }: List
           <div className="h-12 flex justify-between items-center text-gray-700 text-sm mb-2 pb-2 border-b border-gray-200">
             {listing.property_type !== 'land' && (
               <div className="flex items-center">
-                <FaBed className="mr-2 text-blue-500" />
+                <FaBed className="mr-2 text-[#a1927a]" />
                 <span>{listing.bedrooms}</span>
               </div>
             )}
             {listing.property_type !== 'land' && (
               <div className="flex items-center">
-                <FaBath className="mr-2 text-blue-500" />
+                <FaBath className="mr-2 text-[#a1927a]" />
                 <span>{listing.bathrooms} </span>
               </div>
             )}
             <div className="flex items-center">
-              <FaRuler className="mr-2 text-blue-500" />
+              <FaRuler className="mr-2 text-[#a1927a]" />
               <span>{listing.size_sqft.toLocaleString()} m2</span>
             </div>
             <div className="flex items-center">
-              <FaEuroSign className="mr-2 text-blue-500" />
+              <FaEuroSign className="mr-2 text-[#a1927a]" />
               <span>{listing.price.toLocaleString()} </span>
             </div>
           </div>

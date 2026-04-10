@@ -9,7 +9,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const heroTranslations = {
   en: {
-    title: '..Zadar is a lifestyle',
+    title: '...Zadar is a lifestyle',
     sale: 'Sale',
     rent: 'Rent',
     searchPlaceholder: 'Street, neighborhood, city',
@@ -84,7 +84,7 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-8 text-center">
+        <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 text-center courgette-regular">
           {heroText.title}
         </h1>
 
@@ -140,7 +140,7 @@ export default function HeroSection() {
         {/*<p className="text-2xl font-light italic text-white drop-shadow-lg">
           &ldquo;Pravi prostor. Prava odluka. Pravo vrijeme..&rdquo;
         </p>*/}
-        <p className="text-gray-200 mt-2 text-sm drop-shadow">
+        <p className="text-gray-200 mt-2 text-lg drop-shadow courgette-regular">
           {heroText.tagline}
         </p>
       </div>
