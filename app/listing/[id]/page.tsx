@@ -82,7 +82,7 @@ export default function ListingDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#e8dfbc]">
         <Navigation forceWhite={true} />
         <div className="container mx-auto px-4 py-32 text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
@@ -94,7 +94,7 @@ export default function ListingDetailPage() {
 
   if (error || !listing) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#e8dfbc]">
         <Navigation forceWhite={true} />
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Listing Not Found</h1>
@@ -114,7 +114,7 @@ export default function ListingDetailPage() {
   }).format(listing.price);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#e8dfbc]">
       <Navigation forceWhite={true} />
       
       <div className="container mx-auto px-4 pt-32 pb-24">
@@ -142,7 +142,7 @@ export default function ListingDetailPage() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 overflow-hidden">
           
           {/* Left Side - Images */}
           <div className="p-6">
@@ -185,7 +185,7 @@ export default function ListingDetailPage() {
             {/* Key Features Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8 pb-8 border-b border-gray-200">
               {listing.property_type !== 'land' && (
-                <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-center gap-3 bg-[#e8dfbc] p-4 rounded-lg border-2 border-[#9e784a]">
                   <FaBed className="text-blue-500" size={24} />
                   <div>
                     <p className="text-sm text-gray-600">{language === 'hr' ? 'Spavaće sobe' : 'Bedrooms'}</p>
@@ -195,7 +195,7 @@ export default function ListingDetailPage() {
               )}
               
               {listing.property_type !== 'land' && (
-                <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                <div className="flex items-center gap-3 bg-[#e8dfbc] p-4 rounded-lg border-2 border-[#9e784a]">
                   <FaBath className="text-blue-500" size={24} />
                   <div>
                     <p className="text-sm text-gray-600">{language === 'hr' ? 'Wc' : 'Bathrooms'}</p>
@@ -204,7 +204,7 @@ export default function ListingDetailPage() {
                 </div>
               )}
               
-              <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+              <div className="flex items-center gap-3 bg-[#e8dfbc] p-4 rounded-lg border-2 border-[#9e784a]">
                 <FaRuler className="text-blue-500" size={24} />
                 <div>
                   <p className="text-sm text-gray-600">{language === 'hr' ? 'Površina' : 'Size'}</p>
@@ -212,7 +212,7 @@ export default function ListingDetailPage() {
                 </div>
               </div>
               
-              <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+              <div className="flex items-center gap-3 bg-[#e8dfbc] p-4 rounded-lg border-2 border-[#9e784a]">
                 <FaHome className="text-blue-500" size={24} />
                 <div>
                   <p className="text-sm text-gray-600">{language === 'hr' ? 'Tip nekretnine' : 'Property Type'}</p>
@@ -238,7 +238,7 @@ export default function ListingDetailPage() {
 
         {/* Map Section (Placeholder) */}
         {listing.latitude && listing.longitude && (
-          <div className="mt-8 bg-white rounded-lg shadow-lg p-6">
+          <div className="mt-8 p-6">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Location</h2>
             <div className="h-96 bg-gray-200 rounded-lg flex items-center justify-center">
               <p className="text-gray-500">

@@ -124,9 +124,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
               <div className="group relative">
                 <button className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300">
                   {t.realEstate}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
+                
                 </button>
                 <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
 

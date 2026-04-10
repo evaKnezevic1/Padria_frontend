@@ -204,7 +204,7 @@ export default function ApproximateLocationMap({ listingId, className = '' }: Ap
 
   if (loading) {
     return (
-      <div className={`bg-white rounded-lg shadow-lg p-6 ${className}`}>
+      <div className={`p-6 ${className}`}>
         <h2 className="text-2xl font-bold text-gray-800 mb-4">{language === 'hr' ? 'Lokacija' : 'Location'}</h2>
         <div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center">
           <div className="text-center">
@@ -218,7 +218,7 @@ export default function ApproximateLocationMap({ listingId, className = '' }: Ap
 
   if (error) {
     return (
-      <div className={`bg-white rounded-lg shadow-lg p-6 ${className}`}>
+      <div className={`p-6 ${className}`}>
         <h2 className="text-2xl font-bold text-gray-800 mb-4">{language === 'hr' ? 'Približna lokacija' : 'Approximate Location'}</h2>
         <div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center">
           <div className="text-center">
@@ -234,7 +234,7 @@ export default function ApproximateLocationMap({ listingId, className = '' }: Ap
   }
 
   return (
-    <div className={`bg-white rounded-lg shadow-lg p-6 ${className}`}>
+    <div className={`p-6 ${className}`}>
       <h2 className="text-2xl font-bold text-gray-800 mb-4">{language === 'hr' ? 'Približna lokacija' : 'Approximate Location'}</h2>
       <div 
         ref={mapRef}

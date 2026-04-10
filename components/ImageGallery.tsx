@@ -94,7 +94,7 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
 
   if (images.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="overflow-hidden">
         <div className="relative bg-gray-200 h-64 sm:h-80 md:h-96 flex items-center justify-center">
           <span className="text-gray-500">No images available</span>
         </div>
@@ -104,7 +104,7 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="overflow-hidden">
         {/* Main Image */}
         <div 
           className="relative bg-gray-200 h-64 sm:h-80 md:h-96 cursor-pointer group"
@@ -153,7 +153,7 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
 
         {/* Thumbnail Gallery */}
         {hasMultipleImages && (
-          <div className="p-3 sm:p-4 bg-gray-50 border-t border-gray-100">
+          <div className="p-3 sm:p-4 bg-[#e8dfbc] border-t-2 border-[#9e784a]">
             <div className="flex items-center gap-2">
               {/* Left scroll button */}
               {images.length > VISIBLE_THUMBNAILS && (
