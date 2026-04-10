@@ -303,6 +303,11 @@ export default function Home() {
             >
               <FaWhatsapp />
             </a>
+            <img
+              src="/images/hgk-logo.png"
+              alt="hgk logo"
+              className="w-20 h-20 -mt-6 object-contain hover:scale-110 transition"
+              />
           </div>
         </div>
       </section>
