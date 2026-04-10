@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
+import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { AxiosResponse } from 'axios';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Navigation from '@/components/Navigation';
 import ListingCard from '@/components/ListingCard';
 import { Listing, SearchFilters } from '@/types';
@@ -167,7 +169,7 @@ function ListingsContent() {
                 <select
                   value={filters.property_type || ''}
                   onChange={(e) => handleFilterChange({ property_type: e.target.value || undefined })}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   <option value="">{language === 'hr' ? 'Sve vrste' : 'All Types'}</option>
                   <option value="house">{language === 'hr' ? 'Kuća' : 'House'}</option>
@@ -187,14 +189,14 @@ function ListingsContent() {
                     placeholder="Min"
                     value={filters.min_price ?? ''}
                     onChange={(e) => handleFilterChange({ min_price: e.target.value ? parseInt(e.target.value) : undefined })}
-                    className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                   <input
                     type="number"
                     placeholder="Max"
                     value={filters.max_price ?? ''}
                     onChange={(e) => handleFilterChange({ max_price: e.target.value ? parseInt(e.target.value) : undefined })}
-                    className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
@@ -208,7 +210,7 @@ function ListingsContent() {
                   value={filters.listing_type || ''}
                   onChange={(e) => handleFilterChange({ listing_type: e.target.value || undefined })}
                   disabled={filters.property_type === 'land'}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {filters.property_type !== 'land' && (
                     <option value="">{language === 'hr' ? 'Sve' : 'All'}</option>
@@ -279,6 +281,57 @@ function ListingsContent() {
           )}
         </div>
       </div>
+
+      {/* Call to Action Section */}
+      <section className="py-8 bg-gradient-to-r bg-[#354f54] shadow-lg text-white">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-4xl font-bold mb-4">{language === 'hr' ? 'Tražite svoj novi dom?' : 'Ready to Find Your Next Home?'}</h2>
+          <p className="text-base mb-4 opacity-90">
+            {language === 'hr' ? 'Pogledajte našu ponudu nekretnina ili nam se javite za pomoć pri odabiru.' : 'Browse all our available listings or contact our team for personalized assistance.'}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/listings"
+              className="bg-white text-[#354f54] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
+            >
+              {language === 'hr' ? 'Pregledaj sve ponude' : 'Browse All Listings'}
+            </Link>
+            <Link
+              href="/public/contact"
+              className="border-2 border-white text-white hover:bg-white hover:text-[#354f54] px-8 py-3 rounded-lg font-semibold transition-colors"
+            >
+              {language === 'hr' ? 'Kontaktirajte nas' : 'Contact Us'}
+            </Link>
+          </div>
+          <div className="flex justify-center mt-4 gap-6">
+            <a
+              href="https://www.instagram.com/padriarealestate/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-white-400 hover:text-pink-500 text-3xl"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://wa.me/385989335547"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="text-white-400 hover:text-green-400 text-3xl"
+            >
+              <FaWhatsapp />
+            </a>
+             <img
+              src="/images/hgk-logo.png"
+              alt="hgk logo"
+              className="w-20 h-20 -mt-6 object-contain hover:scale-110 transition"
+              />
+
+          </div>
+        </div>
+      </section>
+      
     </main>
   );
 }
