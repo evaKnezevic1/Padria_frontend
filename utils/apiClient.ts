@@ -11,14 +11,12 @@ const apiClient = axios.create({
   withCredentials: true,
 });
 
-// Add token to requests if available
-apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem('adminToken');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+export const clearAdminAuth = () => {
+  if (typeof window === 'undefined') {
+    return;
   }
-  return config;
-});
+  localStorage.removeItem('adminToken');
+};
 
 // Handle auth errors and token management
 apiClient.interceptors.response.use(
@@ -26,7 +24,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Clear invalid token
-      localStorage.removeItem('adminToken');
+      clearAdminAuth();
       console.warn('Authentication required. Please log in to access admin features.');
     }
     return Promise.reject(error);

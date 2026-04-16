@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import AddListingModal from './AddListingModal';
-import apiClient from '@/utils/apiClient';
+import apiClient, { clearAdminAuth } from '@/utils/apiClient';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface NavigationProps {
@@ -83,6 +83,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
   const handleAdminLogout = () => {
     if (confirm(t.logoutConfirm)) {
       apiClient.post('/admin/logout').finally(() => {
+        clearAdminAuth();
         setIsAdminLoggedIn(false);
         window.location.href = '/';
       });
