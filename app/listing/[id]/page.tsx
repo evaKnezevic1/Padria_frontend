@@ -82,7 +82,7 @@ export default function ListingDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#e8dfbc]">
+      <div className="min-h-screen bg-[#c4b8a3]">
         <Navigation forceWhite={true} />
         <div className="container mx-auto px-4 py-32 text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
@@ -94,7 +94,7 @@ export default function ListingDetailPage() {
 
   if (error || !listing) {
     return (
-      <div className="min-h-screen bg-[#e8dfbc]">
+      <div className="min-h-screen bg-[#c4b8a3]">
         <Navigation forceWhite={true} />
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Listing Not Found</h1>
@@ -114,7 +114,7 @@ export default function ListingDetailPage() {
   }).format(listing.price);
 
   return (
-    <div className="min-h-screen bg-[#e8dfbc]">
+    <div className="min-h-screen bg-[#c4b8a3]">
       <Navigation forceWhite={true} />
       
       <div className="container mx-auto px-4 pt-32 pb-24">

@@ -73,7 +73,7 @@ function ListingsContent() {
       <div className="pt-32 pb-16 bg-light min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header with Filters */}
-          <div className="mb-12 flex justify-between items-start">
+          <div className="mb-12 flex flex-col gap-6 xl:flex-row xl:justify-between xl:items-start">
             <div>
               <h1 className="text-4xl font-bold text-gray-800 mb-4">
                 {language === 'hr' ? 'Sve Nekretnine' : 'All Listings'}
@@ -84,39 +84,39 @@ function ListingsContent() {
             </div>
 
             {/* Filters in Top Right */}
-            <div className="flex gap-4">
+            <div className="w-full xl:w-auto grid grid-cols-1 sm:grid-cols-2 gap-4 xl:gap-3">
               {/* Price Filter */}
-              <div>
+              <div className="min-w-0 xl:w-52">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   {language === 'hr' ? 'Raspon cijene' : 'Price Range'}
                 </label>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   <input
                     type="number"
                     placeholder={language === 'hr' ? 'Min' : 'Min'}
                     value={filters.min_price || ''}
                     onChange={(e) => handleFilterChange({ min_price: e.target.value ? parseInt(e.target.value) : 0 })}
-                    className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                   <input
                     type="number"
                     placeholder={language === 'hr' ? 'Max' : 'Max'}
                     value={filters.max_price || ''}
                     onChange={(e) => handleFilterChange({ max_price: e.target.value ? parseInt(e.target.value) : 10000000 })}
-                    className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
 
               {/* Type Filter (Rent/Sale) */}
-              <div>
+              <div className="min-w-0 xl:w-40">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   {language === 'hr' ? 'Vrsta' : 'Type'}
                 </label>
                 <select
                   value={filters.listing_type || ''}
                   onChange={(e) => handleFilterChange({ listing_type: e.target.value || undefined })}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   <option value="">{language === 'hr' ? 'Sve' : 'All'}</option>
                   <option value="sale">{language === 'hr' ? 'Na prodaju' : 'For Sale'}</option>

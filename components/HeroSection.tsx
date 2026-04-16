@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from './Navigation';
 import { FaSearch } from 'react-icons/fa';
@@ -84,7 +83,7 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 text-center courgette-regular">
+        <h1 className="text-6xl md:text-7xl dancing-script-hero-title text-white/95 mb-8 text-center">
           {heroText.title}
         </h1>
 
@@ -140,7 +139,7 @@ export default function HeroSection() {
         {/*<p className="text-2xl font-light italic text-white drop-shadow-lg">
           &ldquo;Pravi prostor. Prava odluka. Pravo vrijeme..&rdquo;
         </p>*/}
-        <p className="text-gray-200 mt-2 text-lg drop-shadow courgette-regular">
+        <p className="text-gray-200 mt-2 text-2xl dancing-script-hero-tagline">
           {heroText.tagline}
         </p>
       </div>

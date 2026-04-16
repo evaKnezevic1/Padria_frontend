@@ -106,7 +106,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
       />
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isHomeTop ? 'bg-transparent' : 'bg-[#354f54] shadow-lg'
+          isHomeTop && !isMenuOpen ? 'bg-transparent' : 'bg-[#354f54] shadow-lg'
         }`}
       >
         <div className="max-w-7xl mx-auto px-3">
@@ -115,17 +115,16 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             <div className="hidden md:flex items-center gap-16 flex-1 justify-end pr-36">
               <Link
                 href="/"
-                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300 courgette-regular"
+                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.home}
               </Link>
 
               {/* Real Estate Dropdown with Nested Submenus */}
               <div className="group relative">
-                <button className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300 courgette-regular">
+                <Link href="/listings" className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300">
                   {t.realEstate}
-                
-                </button>
+                </Link>
                 <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
 
                   {/* House Submenu */}
@@ -188,14 +187,14 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             <div className="hidden md:flex items-center gap-16 flex-1 justify-start pl-24">
               <Link
                 href="/public/about"
-                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300 courgette-regular"
+                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.aboutUs}
               </Link>
 
               <Link
                 href="/public/contact"
-                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300 courgette-regular"
+                className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.contactUs}
               </Link>
@@ -240,7 +239,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 space-y-2 pb-4 bg-transparent">
+            <div className="md:hidden mt-4 space-y-2 pb-4 bg-[#354f54]/95 backdrop-blur-sm rounded-b-xl shadow-xl max-h-[calc(100vh-7rem)] overflow-y-auto">
               <Link href="/" className="block text-sm font-medium px-4 py-2 text-white">{t.home}</Link>
               
               {/* Mobile Real Estate Menu */}

@@ -122,10 +122,10 @@ function ListingsContent() {
         isScrolled ? 'border-b-0' : 'border-b border-gray-200'
       }`}></div>
 
-      <div className="pt-44 pb-16 bg-[#e8d8c8] min-h-screen">
+      <div className="pt-44 pb-16 bg-[#c4b8a3] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
           {/* Page Header with Filters */}
-          <div className="mb-12 flex justify-between items-start">
+          <div className="mb-12 flex flex-col gap-6 xl:flex-row xl:justify-between xl:items-start">
             <div>
               <h1 className="text-4xl font-bold text-gray-800 mb-4">
                 {language === 'hr'
@@ -160,16 +160,16 @@ function ListingsContent() {
             </div>
 
             {/* Filters in Top Right */}
-            <div className="flex gap-4">
+            <div className="w-full xl:w-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-3">
               {/* Property Type Filter */}
-              <div>
+              <div className="min-w-0 xl:w-44">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   {language === 'hr' ? 'Vrsta nekretnine' : 'Property Type'}
                 </label>
                 <select
                   value={filters.property_type || ''}
                   onChange={(e) => handleFilterChange({ property_type: e.target.value || undefined })}
-                  className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   <option value="">{language === 'hr' ? 'Sve vrste' : 'All Types'}</option>
                   <option value="house">{language === 'hr' ? 'Kuća' : 'House'}</option>
@@ -179,30 +179,30 @@ function ListingsContent() {
               </div>
 
               {/* Price Filter */}
-              <div>
+              <div className="min-w-0 xl:w-52">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   {language === 'hr' ? 'Raspon cijene' : 'Price Range'}
                 </label>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   <input
                     type="number"
                     placeholder="Min"
                     value={filters.min_price ?? ''}
                     onChange={(e) => handleFilterChange({ min_price: e.target.value ? parseInt(e.target.value) : undefined })}
-                    className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full min-w-0 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                   <input
                     type="number"
                     placeholder="Max"
                     value={filters.max_price ?? ''}
                     onChange={(e) => handleFilterChange({ max_price: e.target.value ? parseInt(e.target.value) : undefined })}
-                    className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full min-w-0 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
 
               {/* Type Filter (Rent/Sale) */}
-              <div>
+              <div className="min-w-0 sm:col-span-2 xl:col-span-1 xl:w-40">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   {language === 'hr' ? 'Vrsta oglasa' : 'Type'}
                 </label>
@@ -210,7 +210,7 @@ function ListingsContent() {
                   value={filters.listing_type || ''}
                   onChange={(e) => handleFilterChange({ listing_type: e.target.value || undefined })}
                   disabled={filters.property_type === 'land'}
-                  className="w-32 h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {filters.property_type !== 'land' && (
                     <option value="">{language === 'hr' ? 'Sve' : 'All'}</option>

@@ -138,17 +138,23 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[500px]">
             {/* Left - Image */}
             <div className="order-2 lg:order-1 h-[500px] flex items-center justify-center">
-              <img
-                src={displayedImage}
-                alt="Agency Owners"
-                className="w-full h-full object-cover rounded-lg shadow-lg"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (target.src !== '/images/meet_us.jfif') {
-                    target.src = '/images/meet_us.jfif';
-                  }
-                }}
-              />
+              {aboutData ? (
+                <img
+                  src={displayedImage}
+                  alt="Agency Owners"
+                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== '/images/meet_us.jfif') {
+                      target.src = '/images/meet_us.jfif';
+                    }
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full bg-gray-700 rounded-lg shadow-lg flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+                </div>
+              )}
 
               {isAdmin && (
                 <div className="absolute mt-[430px] z-10">
