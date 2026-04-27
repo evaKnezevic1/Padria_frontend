@@ -57,6 +57,8 @@ function ListingsContent() {
     const listingType = searchParams.get('listing_type') || undefined;
     const minPrice = searchParams.get('min_price') ? parseInt(searchParams.get('min_price')!) : undefined;
     const maxPrice = searchParams.get('max_price') ? parseInt(searchParams.get('max_price')!) : undefined;
+    const pageParam = searchParams.get('page');
+    const page = pageParam ? Math.max(1, parseInt(pageParam, 10) || 1) : 1;
 
     setFilters((prev) => ({
       ...prev,
@@ -65,6 +67,7 @@ function ListingsContent() {
       listing_type: listingType,
       min_price: minPrice,
       max_price: maxPrice,
+      page,
     }));
     
     // Mark filters as ready after URL params have been processed

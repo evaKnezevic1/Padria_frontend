@@ -64,7 +64,7 @@ function ListingsContent() {
   };
 
   const handleFilterChange = (newFilters: Partial<SearchFilters>) => {
-    setFilters((prev) => ({ ...prev, ...newFilters, page: 1 }));
+    setFilters((prev) => ({ ...prev, ...newFilters, page: newFilters.page ?? 1 }));
   };
 
   return (
