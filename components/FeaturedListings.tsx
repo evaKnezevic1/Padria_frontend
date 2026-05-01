@@ -8,11 +8,11 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const featuredTranslations = {
   en: {
-    title: 'Featured Listings',
+    title: 'Top Offer',
     description: 'Find a home that suits your style - check out our newest and most attractive properties currently available.',
   },
   hr: {
-    title: 'Izabrane Nekretnine',
+    title: 'Top Ponude',
     description: 'Pronađite dom po Vašem stilu - pogledajte naše najnovije i najatraktivnije nekretnine koje su trenutno dostupne.',
   },
 };

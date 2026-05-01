@@ -107,7 +107,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
       />
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isHomeTop && !isMenuOpen ? 'bg-transparent' : 'bg-[#354f54] shadow-lg'
+          isHomeTop && !isMenuOpen ? 'bg-transparent' : 'bg-[#434b57] shadow-lg'
         }`}
       >
         <div className="max-w-7xl mx-auto px-3">
@@ -240,7 +240,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 space-y-2 pb-4 bg-[#354f54]/95 backdrop-blur-sm rounded-b-xl shadow-xl max-h-[calc(100vh-7rem)] overflow-y-auto">
+            <div className="md:hidden mt-4 space-y-2 pb-4 bg-[#434b57]/95 backdrop-blur-sm rounded-b-xl shadow-xl max-h-[calc(100vh-7rem)] overflow-y-auto">
               <Link href="/" className="block text-sm font-medium px-4 py-2 text-white">{t.home}</Link>
               
               {/* Mobile Real Estate Menu */}

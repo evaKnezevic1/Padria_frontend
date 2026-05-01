@@ -19,7 +19,7 @@ const heroTranslations = {
     sale: 'Prodaja',
     rent: 'Najam',
     searchPlaceholder: 'Ulica, kvart, grad',
-    tagline: 'Vodeća butique agencija za posredovanje nekretninama u zadarskoj županiji',
+    tagline: 'Vodeća boutique agencija za posredovanje nekretninama u zadarskoj županiji',
   },
 };
 

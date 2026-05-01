@@ -6,6 +6,10 @@ import HeroSection from '@/components/HeroSection';
 import FeaturedListings from '@/components/FeaturedListings';
 import { useLanguage } from '@/context/LanguageContext';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { GoGoal } from 'react-icons/go';
+import { IoLockClosedOutline } from 'react-icons/io5';
+import { FaHouse } from "react-icons/fa6";
+import { BsFillLockFill } from "react-icons/bs";
 import apiClient from '@/utils/apiClient';
 
 interface AboutContentResponse {
@@ -64,6 +68,17 @@ export default function Home() {
     : (aboutData?.home_story_text || '');
 
   const displayedImage = aboutData?.about_image_url || '/images/meet_us.jfif';
+  const ctaItems = language === 'hr'
+    ? [
+      { icon: FaHouse, text: 'Zatražite besplatnu procjenu vaše nekretnine.' },
+      { icon: BsFillLockFill, text: 'Prodajte svoju nekretninu u tajnosti bez oglašavanja.' },
+      { icon: GoGoal, text: 'Istaknite svoju nekretninu na vodećim inozemnim portalima.' },
+    ]
+    : [
+      { icon: FaHouse, text: 'Request a free valuation of your property.' },
+      { icon: BsFillLockFill, text: 'Sell your property discreetly without advertising.' },
+      { icon: GoGoal, text: 'Highlight your property on leading foreign portals.' },
+    ];
 
   const startStoryEditing = () => {
     if (!aboutData) return;
@@ -270,27 +285,21 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="pt-8 bg-gradient-to-r bg-[#354f54] shadow-lg text-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-4">{language === 'hr' ? 'Tražite svoj novi dom?' : 'Ready to Find Your Next Home?'}</h2>
-          <p className="text-base mb-4 opacity-90">
-            {language === 'hr' ? 'Pogledajte našu ponudu nekretnina ili nam se javite za pomoć pri odabiru.' : 'Browse all our available listings or contact our team for personalized assistance.'}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/listings"
-              className="bg-white text-[#354f54] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              {language === 'hr' ? 'Pregledaj sve ponude' : 'Browse All Listings'}
-            </Link>
-            <Link
-              href="/public/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-[#354f54] px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              {language === 'hr' ? 'Kontaktirajte nas' : 'Contact Us'}
-            </Link>
+      <section className="pt-8 bg-gradient-to-r bg-[#434b57] shadow-lg text-white">
+        <div className="max-w-6xl mx-auto text-center px-4 sm:px-8">
+          {/* <h2 className="text-4xl font-bold mb-4">{language === 'hr' ? 'Tražite svoj novi dom?' : 'Ready to Find Your Next Home?'}</h2> */}
+          <div className="mt-6 flex flex-col sm:flex-row sm:justify-between gap-8">
+            {ctaItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.text} className="flex flex-col items-center text-center gap-4 sm:max-w-[260px]">
+                  <Icon className="text-5xl text-white" aria-hidden="true" />
+                  <p className="text-lg opacity-90">{item.text}</p>
+                </div>
+              );
+            })}
           </div>
-          <div className="flex justify-center mt-4 gap-6">
+          <div className="flex justify-center mt-10 gap-6">
             <a
               href="https://www.instagram.com/padriarealestate/"
               target="_blank"
@@ -316,7 +325,7 @@ export default function Home() {
               />
   
           </div>
-          <p className="text-sm -mt-2"> {language === 'hr' ? 'Licencirana agencija za nekretnine' : 'Licensed real estate agency'}</p>
+          <p className="text-sm -mt-2 text-white/50"> {language === 'hr' ? 'Licencirana agencija za nekretnine' : 'Licensed real estate agency'}</p>
         </div>
       </section>
     </main>

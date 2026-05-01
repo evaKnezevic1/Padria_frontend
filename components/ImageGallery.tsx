@@ -153,7 +153,7 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
 
         {/* Thumbnail Gallery */}
         {hasMultipleImages && (
-          <div className="p-3 sm:p-4 bg-[#e8dfbc] border-t-2 border-[#9e784a]">
+          <div className="p-3 sm:p-4 bg-[#c4b8a3] border-t-2 border-[#9e784a]">
             <div className="flex items-center gap-2">
               {/* Left scroll button */}
               {images.length > VISIBLE_THUMBNAILS && (
