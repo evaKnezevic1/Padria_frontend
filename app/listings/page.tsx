@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { AxiosResponse } from 'axios';
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import ListingCard from '@/components/ListingCard';
 import { Listing, SearchFilters } from '@/types';
@@ -285,55 +285,7 @@ function ListingsContent() {
         </div>
       </div>
 
-      {/* Call to Action Section */}
-      <section className="py-8 bg-gradient-to-r bg-[#354f54] shadow-lg text-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-4">{language === 'hr' ? 'Tražite svoj novi dom?' : 'Ready to Find Your Next Home?'}</h2>
-          <p className="text-base mb-4 opacity-90">
-            {language === 'hr' ? 'Pogledajte našu ponudu nekretnina ili nam se javite za pomoć pri odabiru.' : 'Browse all our available listings or contact our team for personalized assistance.'}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/listings"
-              className="bg-white text-[#354f54] hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              {language === 'hr' ? 'Pregledaj sve ponude' : 'Browse All Listings'}
-            </Link>
-            <Link
-              href="/public/contact"
-              className="border-2 border-white text-white hover:bg-white hover:text-[#354f54] px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              {language === 'hr' ? 'Kontaktirajte nas' : 'Contact Us'}
-            </Link>
-          </div>
-          <div className="flex justify-center mt-4 gap-6">
-            <a
-              href="https://www.instagram.com/padriarealestate/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-white-400 hover:text-pink-500 text-3xl"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="https://wa.me/385989335547"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="text-white-400 hover:text-green-400 text-3xl"
-            >
-              <FaWhatsapp />
-            </a>
-             <img
-              src="/images/hgk-logo.png"
-              alt="hgk logo"
-              className="w-20 h-20 -mt-6 object-contain hover:scale-110 transition"
-              />
-
-          </div>
-        </div>
-      </section>
+      <Footer />
       
     </main>
   );
