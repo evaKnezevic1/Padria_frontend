@@ -13,7 +13,7 @@ const heroImages = [
   '/images/hero_images/donat.png',
 ];
 
-interface AboutContent {
+export interface AboutContent {
   id: number;
   title: string;
   intro: string;
@@ -51,18 +51,22 @@ const uiText = {
   },
 };
 
-export default function AboutPage() {
+interface AboutClientProps {
+  initialContent?: AboutContent | null;
+}
+
+export default function AboutClient({ initialContent }: AboutClientProps) {
   const { language } = useLanguage();
   const t = uiText[language];
 
-  const [content, setContent] = useState<AboutContent | null>(null);
+  const [content, setContent] = useState<AboutContent | null>(initialContent ?? null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [showEnglish, setShowEnglish] = useState(false);
   const [draft, setDraft] = useState<AboutContent | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialContent);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -74,8 +78,10 @@ export default function AboutPage() {
 
   useEffect(() => {
     verifyAdmin();
-    fetchContent();
-  }, []);
+    if (!initialContent) {
+      fetchContent();
+    }
+  }, [initialContent]);
 
   const verifyAdmin = async () => {
     try {
@@ -524,7 +530,7 @@ export default function AboutPage() {
           <h2 className="text-lg font-bold text-gray-800 mb-2">{loc('contact_title')}</h2>
           <p className="text-gray-700 text-sm">
             {loc('contact_text')}{' '}
-            <Link href="/public/contact" className="text-orange-500 hover:text-orange-600 font-semibold">
+            <Link href="/contact" className="text-orange-500 hover:text-orange-600 font-semibold">
               {language === 'en' ? 'Contact us' : 'Kontaktirajte nas'}
             </Link>
           </p>

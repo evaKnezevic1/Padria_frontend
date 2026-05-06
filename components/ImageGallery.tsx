@@ -107,13 +107,13 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
       <div className="overflow-hidden">
         {/* Main Image */}
         <div 
-          className="relative bg-gray-200 h-64 sm:h-80 md:h-96 cursor-pointer group"
+          className="relative bg-transparent h-64 sm:h-80 md:h-96 cursor-pointer group"
           onClick={openModal}
         >
           <img
             src={images[selectedIndex]}
             alt={`${title} - Image ${selectedIndex + 1}`}
-            className="w-full h-full object-cover transition-transform duration-300"
+            className="block w-full h-full object-cover transition-transform duration-300"
           />
           
           {/* Overlay hint on hover */}
@@ -188,7 +188,7 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
                       onClick={() => selectImage(index)}
                       className={`flex-shrink-0 rounded-lg overflow-hidden transition-all duration-200 ${
                         selectedIndex === index 
-                          ? 'ring-2 ring-orange-500 ring-offset-2 scale-105' 
+                          ? 'ring-2 ring-orange-500 ring-offset-0 scale-105' 
                           : 'ring-1 ring-gray-200 hover:ring-orange-300 hover:scale-102'
                       }`}
                       style={{ width: `calc((100% - ${(VISIBLE_THUMBNAILS - 1) * 8}px) / ${VISIBLE_THUMBNAILS})` }}
@@ -198,7 +198,7 @@ export default function ImageGallery({ images, title = 'Property' }: ImageGaller
                         <img
                           src={image}
                           alt={`${title} thumbnail ${index + 1}`}
-                          className={`w-full h-full object-cover transition-opacity duration-200 ${
+                          className={`block w-full h-full object-cover transition-opacity duration-200 ${
                             selectedIndex === index ? 'opacity-100' : 'opacity-80 hover:opacity-100'
                           }`}
                         />

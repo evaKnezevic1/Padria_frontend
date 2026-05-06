@@ -32,7 +32,7 @@ const translations = {
   },
 };
 
-interface ContactContent {
+export interface ContactContent {
   id: number;
   title: string;
   subtitle: string;
@@ -50,11 +50,15 @@ const heroImages = [
   '/images/hero_images/donat.png',
 ];
 
-export default function ContactPage() {
+interface ContactClientProps {
+  initialContent?: ContactContent | null;
+}
+
+export default function ContactClient({ initialContent }: ContactClientProps) {
   const { language } = useLanguage();
   const t = translations[language];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [content, setContent] = useState<ContactContent | null>(null);
+  const [content, setContent] = useState<ContactContent | null>(initialContent ?? null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editLang, setEditLang] = useState<'hr' | 'en'>('hr');
@@ -71,8 +75,10 @@ export default function ContactPage() {
 
   useEffect(() => {
     verifyAdmin();
-    fetchContent();
-  }, []);
+    if (!initialContent) {
+      fetchContent();
+    }
+  }, [initialContent]);
 
   const verifyAdmin = async () => {
     try {
@@ -310,4 +316,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

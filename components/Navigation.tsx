@@ -187,14 +187,14 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             {/* Desktop Right Menu */}
             <div className="hidden md:flex items-center gap-16 flex-1 justify-start pl-24">
               <Link
-                href="/public/about"
+                href="/about"
                 className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.aboutUs}
               </Link>
 
               <Link
-                href="/public/contact"
+                href="/contact"
                 className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.contactUs}
@@ -330,8 +330,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                 )}
               </div>
 
-              <Link href="/public/about" className="block text-sm font-medium px-4 py-2 text-white">{t.aboutUs}</Link>
-              <Link href="/public/contact" className="block text-sm font-medium px-4 py-2 text-white">{t.contactUs}</Link>
+              <Link href="/about" className="block text-sm font-medium px-4 py-2 text-white">{t.aboutUs}</Link>
+              <Link href="/contact" className="block text-sm font-medium px-4 py-2 text-white">{t.contactUs}</Link>
               <button
                 onClick={() => setLanguage(language === 'en' ? 'hr' : 'en')}
                 className="block w-full text-left text-sm font-medium px-4 py-2 text-white"

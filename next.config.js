@@ -21,6 +21,30 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/public/about',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/public/contact',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/public/listings',
+        destination: '/listings',
+        permanent: true,
+      },
+      {
+        source: '/public/listing/:id',
+        destination: '/listing/:id',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
