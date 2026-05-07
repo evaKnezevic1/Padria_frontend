@@ -1,25 +1,33 @@
 import { Listing, PaginatedResponse, SearchFilters } from '@/types';
 import { serverFetch } from '@/utils/serverApi';
-import ListingsPageClient from './ListingsPageClient';
+import ListingsPageClient from '../../../(hr)/listings/ListingsPageClient';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://padriarealestate.hr';
 
 export const metadata = {
-  title: 'Nekretnine na prodaju Zadar | Kuće i Apartmani uz More | Real Estate',
-  description: 'Pregledajte premium nekretnine u Zadru. Kuće, apartmani i nekretnine uz more u Zadru, Hrvatska. Browse premium real estate listings in Zadar — houses, apartments and properties near the sea.',
-  keywords: 'nekretnine Zadar, kuće na prodaju Zadar, apartmani Zadar, nekretnine uz more, kupiti kuću Zadar, luksuzne nekretnine Hrvatska, real estate Zadar, houses for sale Zadar, apartments Zadar, buy house Croatia',
-  alternates: { canonical: `${siteUrl}/listings` },
+  title: 'Properties for sale in Zadar – Houses & Apartments | Padria',
+  description: 'Browse premium real estate listings in Zadar County. Houses, apartments and seafront properties with detailed descriptions and photos.',
+  alternates: {
+    canonical: `${siteUrl}/en/listings`,
+    languages: {
+      'hr-HR': `${siteUrl}/listings`,
+      'en-US': `${siteUrl}/en/listings`,
+      'x-default': `${siteUrl}/listings`,
+    },
+  },
   openGraph: {
-    title: 'Nekretnine na prodaju Zadar | Kuće i Apartmani uz More',
-    description: 'Pregledajte premium nekretnine u Zadru. Kuće, apartmani i nekretnine uz more u Zadru, Hrvatska.',
-    url: `${siteUrl}/listings`,
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Nekretnine Zadar - Padria Real Estate' }],
+    title: 'Properties for sale in Zadar – Houses & Apartments | Padria',
+    description: 'Browse premium real estate listings in Zadar County. Houses, apartments and seafront properties.',
+    url: `${siteUrl}/en/listings`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Real estate Zadar – Padria Real Estate' }],
     type: 'website' as const,
+    locale: 'en_US',
+    alternateLocale: ['hr_HR'],
   },
   twitter: {
     card: 'summary_large_image' as const,
-    title: 'Nekretnine na prodaju Zadar | Kuće i Apartmani uz More',
-    description: 'Pregledajte premium nekretnine u Zadru — kuće, apartmani i nekretnine uz more.',
+    title: 'Properties for sale in Zadar – Houses & Apartments | Padria',
+    description: 'Browse premium real estate listings in Zadar County.',
     images: ['/og-image.jpg'],
   },
 };
@@ -44,12 +52,12 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Pocetna', item: siteUrl },
-    { '@type': 'ListItem', position: 2, name: 'Oglasi', item: `${siteUrl}/listings` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/en` },
+    { '@type': 'ListItem', position: 2, name: 'Listings', item: `${siteUrl}/en/listings` },
   ],
 };
 
-export default async function ListingsPage({ searchParams }: PageProps) {
+export default async function EnListingsPage({ searchParams }: PageProps) {
   const filters: SearchFilters = {
     location: pickString(searchParams.location) ?? '',
     property_type: pickString(searchParams.property_type),

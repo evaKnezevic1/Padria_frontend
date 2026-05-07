@@ -57,7 +57,11 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
   const pathname = usePathname();
-  const isHomeTop = pathname === '/' && !isScrolled && !forceWhite;
+  const isEn = language === 'en';
+  const prefix = isEn ? '/en' : '';
+  const homePath = isEn ? '/en' : '/';
+  const listingsBase = `${prefix}/listings`;
+  const isHomeTop = (pathname === '/' || pathname === '/en') && !isScrolled && !forceWhite;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,7 +119,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             {/* Desktop Left Menu */}
             <div className="hidden md:flex items-center gap-16 flex-1 justify-end pr-36">
               <Link
-                href="/"
+                href={homePath}
                 className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.home}
@@ -123,7 +127,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
 
               {/* Real Estate Dropdown with Nested Submenus */}
               <div className="group relative">
-                <Link href="/listings" className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300">
+                <Link href={listingsBase} className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors flex items-center gap-2 text-white hover:text-orange-300">
                   {t.realEstate}
                 </Link>
                 <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -137,8 +141,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                       </svg>
                     </button>
                     <div className="absolute left-full top-0 ml-0 w-40 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover/house:opacity-100 group-hover/house:visible transition-all duration-200 z-50">
-                      <Link href="/listings?property_type=house&listing_type=sale" className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm">{t.sale}</Link>
-                      <Link href="/listings?property_type=house&listing_type=rent" className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm border-b">{t.rent}</Link>
+                      <Link href={`${listingsBase}?property_type=house&listing_type=sale`} className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm">{t.sale}</Link>
+                      <Link href={`${listingsBase}?property_type=house&listing_type=rent`} className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm border-b">{t.rent}</Link>
                     </div>
                   </div>
 
@@ -151,8 +155,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                       </svg>
                     </button>
                     <div className="absolute left-full top-0 ml-0 w-40 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover/apartment:opacity-100 group-hover/apartment:visible transition-all duration-200 z-50">
-                      <Link href="/listings?property_type=apartment&listing_type=sale" className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm">{t.sale}</Link>
-                      <Link href="/listings?property_type=apartment&listing_type=rent" className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm border-b">{t.rent}</Link>
+                      <Link href={`${listingsBase}?property_type=apartment&listing_type=sale`} className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm">{t.sale}</Link>
+                      <Link href={`${listingsBase}?property_type=apartment&listing_type=rent`} className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm border-b">{t.rent}</Link>
                     </div>
                   </div>
 
@@ -165,7 +169,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                       </svg>
                     </button>
                     <div className="absolute left-full top-0 ml-0 w-40 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover/land:opacity-100 group-hover/land:visible transition-all duration-200 z-50">
-                      <Link href="/listings?property_type=land&listing_type=sale" className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm border-b">{t.sale}</Link>
+                      <Link href={`${listingsBase}?property_type=land&listing_type=sale`} className="block px-4 py-3 text-gray-800 hover:bg-orange-50 text-sm border-b">{t.sale}</Link>
                     </div>
                   </div>
                 </div>
@@ -173,7 +177,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             </div>
 
             {/* Center Logo */}
-            <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex h-full items-center pt-3">
+            <Link href={homePath} className="absolute left-1/2 -translate-x-1/2 flex h-full items-center pt-3">
               <Image
                 src="/images/Padria_Logo_transp.png"
                 alt="Pavica's Homes Logo"
@@ -187,14 +191,14 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
             {/* Desktop Right Menu */}
             <div className="hidden md:flex items-center gap-16 flex-1 justify-start pl-24">
               <Link
-                href="/about"
+                href={`${prefix}/about`}
                 className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.aboutUs}
               </Link>
 
               <Link
-                href="/contact"
+                href={`${prefix}/contact`}
                 className="text-sm font-semibold uppercase tracking-[0.08em] transition-colors text-white hover:text-orange-300"
               >
                 {t.contactUs}
@@ -241,7 +245,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden mt-4 space-y-2 pb-4 bg-[#434b57]/95 backdrop-blur-sm rounded-b-xl shadow-xl max-h-[calc(100vh-7rem)] overflow-y-auto">
-              <Link href="/" className="block text-sm font-medium px-4 py-2 text-white">{t.home}</Link>
+              <Link href={homePath} className="block text-sm font-medium px-4 py-2 text-white">{t.home}</Link>
               
               {/* Mobile Real Estate Menu */}
               <div>
@@ -274,8 +278,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                       </button>
                       {(expandedMobileMenu === 'realestate' && expandedMobileSubMenu === 'house') && (
                         <div className="pl-4">
-                          <Link href="/listings?property_type=house&listing_type=sale" className="block text-sm font-medium px-4 py-2 text-white">{t.sale}</Link>
-                          <Link href="/listings?property_type=house&listing_type=rent" className="block text-sm font-medium px-4 py-2 text-white">{t.rent}</Link>
+                          <Link href={`${listingsBase}?property_type=house&listing_type=sale`} className="block text-sm font-medium px-4 py-2 text-white">{t.sale}</Link>
+                          <Link href={`${listingsBase}?property_type=house&listing_type=rent`} className="block text-sm font-medium px-4 py-2 text-white">{t.rent}</Link>
                         </div>
                       )}
                     </div>
@@ -298,8 +302,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                       </button>
                       {(expandedMobileMenu === 'realestate' && expandedMobileSubMenu === 'apartment') && (
                         <div className="pl-4">
-                          <Link href="/listings?property_type=apartment&listing_type=sale" className="block text-sm font-medium px-4 py-2 text-white">{t.sale}</Link>
-                          <Link href="/listings?property_type=apartment&listing_type=rent" className="block text-sm font-medium px-4 py-2 text-white">{t.rent}</Link>
+                          <Link href={`${listingsBase}?property_type=apartment&listing_type=sale`} className="block text-sm font-medium px-4 py-2 text-white">{t.sale}</Link>
+                          <Link href={`${listingsBase}?property_type=apartment&listing_type=rent`} className="block text-sm font-medium px-4 py-2 text-white">{t.rent}</Link>
                         </div>
                       )}
                     </div>
@@ -322,7 +326,7 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                       </button>
                       {(expandedMobileMenu === 'realestate' && expandedMobileSubMenu === 'land') && (
                         <div className="pl-4">
-                          <Link href="/listings?property_type=land&listing_type=sale" className="block text-sm font-medium px-4 py-2 text-white">{t.sale}</Link>
+                          <Link href={`${listingsBase}?property_type=land&listing_type=sale`} className="block text-sm font-medium px-4 py-2 text-white">{t.sale}</Link>
                         </div>
                       )}
                     </div>
@@ -330,8 +334,8 @@ export default function Navigation({ isScrolled: isScrolledProp = false, onListi
                 )}
               </div>
 
-              <Link href="/about" className="block text-sm font-medium px-4 py-2 text-white">{t.aboutUs}</Link>
-              <Link href="/contact" className="block text-sm font-medium px-4 py-2 text-white">{t.contactUs}</Link>
+              <Link href={`${prefix}/about`} className="block text-sm font-medium px-4 py-2 text-white">{t.aboutUs}</Link>
+              <Link href={`${prefix}/contact`} className="block text-sm font-medium px-4 py-2 text-white">{t.contactUs}</Link>
               <button
                 onClick={() => setLanguage(language === 'en' ? 'hr' : 'en')}
                 className="block w-full text-left text-sm font-medium px-4 py-2 text-white"

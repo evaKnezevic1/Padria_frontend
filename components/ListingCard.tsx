@@ -28,6 +28,22 @@ function ListingCardInner({ listing, imageUrl, onDelete, isAdmin = false }: List
     return null;
   }, [listing.images]);
 
+  const propertyTypeLabel = useMemo(() => {
+    const map: Record<string, { hr: string; en: string }> = {
+      house: { hr: 'Kuća', en: 'House' },
+      apartment: { hr: 'Apartman', en: 'Apartment' },
+      land: { hr: 'Zemljište', en: 'Land' },
+    };
+    return map[listing.property_type]?.[language] ?? listing.property_type;
+  }, [listing.property_type, language]);
+
+  const imageAlt = useMemo(() => {
+    const title = getLocalizedTitle(listing, language);
+    const sizePart = listing.size_sqft ? `${listing.size_sqft} m²` : '';
+    const cityPart = [listing.city, listing.state].filter(Boolean).join(', ');
+    return [propertyTypeLabel, sizePart, title, cityPart].filter(Boolean).join(' – ');
+  }, [listing, language, propertyTypeLabel]);
+
   const handleDelete = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -68,14 +84,14 @@ function ListingCardInner({ listing, imageUrl, onDelete, isAdmin = false }: List
   }).format(listing.price);
 
   return (
-    <Link href={`/listing/${listing.id}`} className="h-full">
+    <Link href={`${language === 'en' ? '/en' : ''}/listing/${listing.id}`} className="h-full">
       <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col h-full">
         {/* Image Container */}
         <div className="relative h-64 bg-gray-200 overflow-hidden">
           {displayImageUrl ? (
             <Image
               src={displayImageUrl}
-              alt={listing.title}
+              alt={imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
               className="object-cover group-hover:scale-110 transition-transform duration-300"

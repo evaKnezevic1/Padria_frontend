@@ -500,8 +500,9 @@ export default function AboutClient({ initialContent }: AboutClientProps) {
       <div className="relative z-10 flex justify-center items-center min-h-screen px-4 sm:px-6 lg:px-8 pt-20">
         <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl p-10 md:p-14 max-h-[75vh] overflow-y-auto mt-16">
 
+          <h1 className="sr-only">O nama | Padria agencija za nekretnine Zadar</h1>
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-4xl font-bold text-gray-800">{loc('title')}</h1>
+            <p className="text-4xl font-bold text-gray-800">{loc('title')}</p>
             {isAdmin && (
               <button onClick={startEditing} className="px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors">
                 ✏️ {t.edit}
@@ -530,7 +531,7 @@ export default function AboutClient({ initialContent }: AboutClientProps) {
           <h2 className="text-lg font-bold text-gray-800 mb-2">{loc('contact_title')}</h2>
           <p className="text-gray-700 text-sm">
             {loc('contact_text')}{' '}
-            <Link href="/contact" className="text-orange-500 hover:text-orange-600 font-semibold">
+            <Link href={language === 'en' ? '/en/contact' : '/contact'} className="text-orange-500 hover:text-orange-600 font-semibold">
               {language === 'en' ? 'Contact us' : 'Kontaktirajte nas'}
             </Link>
           </p>

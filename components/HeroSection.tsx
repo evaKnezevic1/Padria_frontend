@@ -31,10 +31,10 @@ export default function HeroSection() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const heroImages = [
-    '/images/hero_images/zadar3.jpg',
-    '/images/hero_images/fosa.png',
-    '/images/hero_images/005.jpg',
-    '/images/hero_images/donat.png',
+    { src: '/images/hero_images/zadar3.jpg', alt: 'nekretnine Zadar' },
+    { src: '/images/hero_images/fosa.png', alt: 'agencija za nekretnine Padria' },
+    { src: '/images/hero_images/005.jpg', alt: 'boutique nekretnine Zadar' },
+    { src: '/images/hero_images/donat.png', alt: 'Padria agencija' },
   ];
 
   useEffect(() => {
@@ -50,7 +50,8 @@ export default function HeroSection() {
     const query = new URLSearchParams();
     if (searchQuery.trim()) query.append('location', searchQuery.trim());
     query.append('listing_type', activeTab === 'prodaja' ? 'sale' : 'rent');
-    window.location.href = `/listings?${query.toString()}`;
+    const base = language === 'en' ? '/en/listings' : '/listings';
+    window.location.href = `${base}?${query.toString()}`;
   };
 
   return (
@@ -65,8 +66,8 @@ export default function HeroSection() {
           }}
         >
           <Image
-            src={image}
-            alt={`Hero background ${index + 1}`}
+            src={image.src}
+            alt={image.alt}
             fill
             sizes="100vw"
             className="object-cover"
@@ -83,9 +84,10 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-6xl md:text-7xl dancing-script-hero-title text-white/95 mb-8 text-center">
+        <h1 className="sr-only">Zadar agencija za nekretnine</h1>
+        <p className="text-6xl md:text-7xl snell-roundhand-hero-title text-white/95 mb-8 text-center">
           {heroText.title}
-        </h1>
+        </p>
 
         {/* Search Bar */}
         <div className="w-full max-w-2xl">
@@ -139,7 +141,7 @@ export default function HeroSection() {
         {/*<p className="text-2xl font-light italic text-white drop-shadow-lg">
           &ldquo;Pravi prostor. Prava odluka. Pravo vrijeme..&rdquo;
         </p>*/}
-        <p className="text-gray-200 mt-2 text-2xl dancing-script-hero-tagline">
+        <p className="text-gray-200 mt-2 text-2xl snell-roundhand-hero-tagline">
           {heroText.tagline}
         </p>
       </div>

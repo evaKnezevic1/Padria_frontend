@@ -68,7 +68,7 @@ export default function ListingDetailClient({ listingId, initialListing, initial
         {/* Back Button and Admin Controls */}
         <div className="mb-6 mt-4 flex justify-between items-center">
           <a
-            href="/listings"
+            href={language === 'en' ? '/en/listings' : '/listings'}
             className="text-teal-600 hover:text-teal-800 flex items-center gap-2 font-semibold"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -171,7 +171,7 @@ export default function ListingDetailClient({ listingId, initialListing, initial
             {/* Contact Button */}
             <div className="pt-6 border-t border-gray-200">
               <a
-                href="/contact"
+                href={language === 'en' ? '/en/contact' : '/contact'}
                 className="block w-full bg-teal-600 hover:bg-teal-700 text-white py-4 rounded-lg font-bold text-lg transition-colors shadow-lg text-center"
               >
                 {language === 'hr' ? 'Kontaktirajte nas' : 'Contact Agent'}

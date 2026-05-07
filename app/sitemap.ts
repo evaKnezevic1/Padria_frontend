@@ -40,39 +40,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const listings = await fetchAllListings();
 
-  const staticEntries: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 1,
+  const buildAlternates = (hrPath: string, enPath: string) => ({
+    languages: {
+      hr: `${baseUrl}${hrPath}`,
+      en: `${baseUrl}${enPath}`,
+      'x-default': `${baseUrl}${hrPath}`,
     },
-    {
-      url: `${baseUrl}/listings`,
-      lastModified: now,
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
+  });
+
+  const staticPaths: Array<{ hr: string; en: string; changeFrequency: 'weekly' | 'daily' | 'monthly'; priority: number }> = [
+    { hr: '', en: '/en', changeFrequency: 'weekly', priority: 1 },
+    { hr: '/listings', en: '/en/listings', changeFrequency: 'daily', priority: 0.8 },
+    { hr: '/about', en: '/en/about', changeFrequency: 'monthly', priority: 0.6 },
+    { hr: '/contact', en: '/en/contact', changeFrequency: 'monthly', priority: 0.6 },
   ];
 
-  const listingEntries: MetadataRoute.Sitemap = listings.map((listing) => ({
-    url: `${baseUrl}/listing/${listing.id}`,
-    lastModified: listing.updated_at ? new Date(listing.updated_at) : now,
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
+  const staticEntries: MetadataRoute.Sitemap = staticPaths.flatMap(({ hr, en, changeFrequency, priority }) => {
+    const alternates = buildAlternates(hr, en);
+    return [
+      { url: `${baseUrl}${hr || '/'}`, lastModified: now, changeFrequency, priority, alternates },
+      { url: `${baseUrl}${en}`, lastModified: now, changeFrequency, priority, alternates },
+    ];
+  });
+
+  const listingEntries: MetadataRoute.Sitemap = listings.flatMap((listing) => {
+    const hrPath = `/listing/${listing.id}`;
+    const enPath = `/en/listing/${listing.id}`;
+    const alternates = buildAlternates(hrPath, enPath);
+    const lastModified = listing.updated_at ? new Date(listing.updated_at) : now;
+    return [
+      { url: `${baseUrl}${hrPath}`, lastModified, changeFrequency: 'daily' as const, priority: 0.9, alternates },
+      { url: `${baseUrl}${enPath}`, lastModified, changeFrequency: 'daily' as const, priority: 0.9, alternates },
+    ];
+  });
 
   return [...staticEntries, ...listingEntries];
 }

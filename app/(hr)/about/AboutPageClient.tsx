@@ -491,7 +491,7 @@ export default function AboutPageClient({ initialContent }: AboutPageClientProps
           <h2 className="text-lg font-bold text-gray-800 mb-2">{loc('contact_title')}</h2>
           <p className="text-gray-700 text-sm">
             {loc('contact_text')}{' '}
-            <Link href="/contact" className="text-orange-500 hover:text-orange-600 font-semibold">
+            <Link href={language === 'en' ? '/en/contact' : '/contact'} className="text-orange-500 hover:text-orange-600 font-semibold">
               {language === 'en' ? 'Contact us' : 'Kontaktirajte nas'}
             </Link>
           </p>

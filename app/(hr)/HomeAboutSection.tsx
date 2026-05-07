@@ -117,7 +117,7 @@ export default function HomeAboutSection({ initialAboutData }: HomeAboutSectionP
             {aboutData ? (
               <img
                 src={displayedImage}
-                alt="Agency Owners"
+                alt="Pavica Knežević - Padria Real Estate, agencija za nekretnine, Zadar"
                 className="w-full h-full object-cover rounded-lg shadow-lg"
                 onError={(e) => {
                   const target = e.currentTarget;
@@ -235,7 +235,7 @@ export default function HomeAboutSection({ initialAboutData }: HomeAboutSectionP
 
             <p className="text-xl font-semibold mb-6">Pavica Knežević</p>
             <Link
-              href="/about"
+              href={language === 'en' ? '/en/about' : '/about'}
               className="inline-block text-lg font-semibold uppercase tracking-wide hover:text-orange-300 transition-colors flex items-center gap-2"
             >
               {language === 'hr' ? 'Više o nama' : 'Learn More'} →

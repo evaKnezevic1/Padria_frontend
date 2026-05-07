@@ -1,6 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Language = 'en' | 'hr';
 
@@ -11,26 +12,40 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
-  const [isHydrated, setIsHydrated] = useState(false);
+interface LanguageProviderProps {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}
 
-  useEffect(() => {
-    // Load language from localStorage after hydration
-    const saved = localStorage.getItem('language');
-    if (saved === 'hr' || saved === 'en') {
-      setLanguage(saved);
+export function LanguageProvider({ children, initialLanguage }: LanguageProviderProps) {
+  const pathname = usePathname() || '/';
+  const router = useRouter();
+
+  const language: Language = useMemo(() => {
+    if (initialLanguage) return initialLanguage;
+    return pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'hr';
+  }, [initialLanguage, pathname]);
+
+  const setLanguage = (lang: Language) => {
+    if (lang === language) return;
+
+    const isOnEn = pathname === '/en' || pathname.startsWith('/en/');
+    let target: string;
+    if (lang === 'en') {
+      target = isOnEn ? pathname : `/en${pathname === '/' ? '' : pathname}`;
+    } else {
+      if (!isOnEn) {
+        target = pathname;
+      } else {
+        const stripped = pathname.replace(/^\/en/, '');
+        target = stripped === '' ? '/' : stripped;
+      }
     }
-    setIsHydrated(true);
-  }, []);
-
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem('language', lang);
+    router.push(target);
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

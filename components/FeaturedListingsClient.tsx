@@ -230,7 +230,7 @@ export default function FeaturedListingsClient({ initialListings }: FeaturedList
         {/* View All Button */}
         <div className="text-center mt-12">
           <a
-            href="/listings"
+            href={language === 'en' ? '/en/listings' : '/listings'}
             className="inline-block bg-white border-2 border-[#bd9462] text-[#9e784a] hover:bg-[#bd9462] hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
           >
             {language === 'hr' ? 'Prikaži sve' : 'View All Listings'}

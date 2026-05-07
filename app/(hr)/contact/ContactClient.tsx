@@ -200,6 +200,7 @@ export default function ContactClient({ initialContent }: ContactClientProps) {
         <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl p-10 md:p-14 max-h-[75vh] overflow-y-auto mt-16">
 
           {/* Title row */}
+          <h1 className="sr-only">Padria- kontakt</h1>
           <div className="flex items-center justify-between mb-3 flex-wrap gap-3">
             {isEditing ? (
               <div className="flex-1">
@@ -217,7 +218,7 @@ export default function ContactClient({ initialContent }: ContactClientProps) {
                   value={editTitleVal()} onChange={(e) => handleTitleChange(e.target.value)} />
               </div>
             ) : (
-              <h1 className="text-4xl font-bold text-gray-800">{displayTitle()}</h1>
+              <p className="text-4xl font-bold text-gray-800">{displayTitle()}</p>
             )}
 
             {isAdmin && (
