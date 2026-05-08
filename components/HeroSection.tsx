@@ -142,7 +142,13 @@ export default function HeroSection() {
           &ldquo;Pravi prostor. Prava odluka. Pravo vrijeme..&rdquo;
         </p>*/}
         <p className="text-gray-200 mt-2 text-2xl snell-roundhand-hero-tagline">
-          {heroText.tagline}
+          {heroText.tagline.split('ć').map((part, i, arr) =>
+            i < arr.length - 1 ? (
+              <span key={i}>{part}<span style={{ fontFamily: 'var(--font-ballet), cursive', fontSize: '1.15em' }}>ć</span></span>
+            ) : (
+              <span key={i}>{part}</span>
+            )
+          )}
         </p>
       </div>
     </div>

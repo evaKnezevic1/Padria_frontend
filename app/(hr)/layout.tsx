@@ -12,6 +12,12 @@ const snellRoundhand = localFont({
   variable: '--font-snell-roundhand',
 })
 
+const ballet = localFont({
+  src: '../../public/fonts/Ballet-Regular-VariableFont_opsz.ttf',
+  display: 'swap',
+  variable: '--font-ballet',
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://padriarealestate.hr'),
   title: 'Padria Real Estate | Nekretnine Zadar',
@@ -80,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="hr" suppressHydrationWarning className={snellRoundhand.variable}>
+    <html lang="hr" suppressHydrationWarning className={`${snellRoundhand.variable} ${ballet.variable}`}>
       <head>
         <script
           type="application/ld+json"
