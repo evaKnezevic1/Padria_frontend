@@ -7,7 +7,7 @@ import { serverFetch } from '@/utils/serverApi';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://padriarealestate.hr';
 
 export const metadata = {
-  title: 'Nekretnine Zadar – Kuće uz more | Padria Real Estate',
+  title: 'Nekretnine Zadar | Padria Real Estate',
   description: 'Pronađite dom iz snova u Zadru. Premijerna boutique agencija specijalizirana za kuće uz more i luksuzne apartmane u Zadarskoj županiji.',
   alternates: {
     canonical: siteUrl,
@@ -18,7 +18,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Nekretnine Zadar – Kuće uz more | Padria Real Estate',
+    title: 'Nekretnine Zadar | Padria Real Estate',
     description: 'Pronađite dom iz snova u Zadru. Premijerna boutique agencija specijalizirana za kuće uz more i luksuzne apartmane.',
     url: siteUrl,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Padria Real Estate - Nekretnine Zadar' }],
@@ -28,7 +28,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image' as const,
-    title: 'Nekretnine Zadar – Kuće uz more | Padria Real Estate',
+    title: 'Nekretnine Zadar | Padria Real Estate',
     description: 'Pronađite dom iz snova u Zadru. Premijerna boutique agencija specijalizirana za kuće uz more.',
     images: ['/og-image.jpg'],
   },
