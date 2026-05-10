@@ -61,6 +61,12 @@ const organizationSchema = {
     '@type': 'City',
     name: 'Zadar',
   },
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/images/logo.jpeg`,
+    width: 512,
+    height: 512,
+  },
   sameAs: [
     'https://www.instagram.com/padriarealestate/',
   ],
