@@ -101,7 +101,7 @@ export default function ContactClient({ initialContent }: ContactClientProps) {
         title_en: null,
         subtitle_en: null,
         address: 'Madijevaca 3, Zadar',
-        phone: '+385 98 893 547',
+        phone: '+385 98 893 574',
         email: 'padriarealestate@gmail.com',
       });
     }
