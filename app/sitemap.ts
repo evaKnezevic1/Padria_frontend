@@ -58,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = staticPaths.flatMap(({ hr, en, changeFrequency, priority }) => {
     const alternates = buildAlternates(hr, en);
     return [
-      { url: `${baseUrl}${hr || '/'}`, lastModified: now, changeFrequency, priority, alternates },
+      { url: `${baseUrl}${hr || ''}`, lastModified: now, changeFrequency, priority, alternates },
       { url: `${baseUrl}${en}`, lastModified: now, changeFrequency, priority, alternates },
     ];
   });
